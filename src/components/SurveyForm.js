@@ -44,7 +44,7 @@ export const SurveyForm = () => {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Kari, eres la niña mas pinshi mosha',
+            title: 'Muchas gracias por tu tiempo',
             showConfirmButton: false,
             timer: 1500
         })
