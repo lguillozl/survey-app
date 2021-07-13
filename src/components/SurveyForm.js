@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
-import Car from "../assets/car.png";
+import Car from  "../assets/car.png";
 
 export const SurveyForm = () => {
 
@@ -53,7 +53,7 @@ export const SurveyForm = () => {
     return (
     <div className="auth__main">
         <div className="auth__box-container">
-        <img src={ Car } alt="Car" className="img-car"/>
+        <img src={Car} alt="Car" className="img-car"/>
 
         <br />
         <hr />
