@@ -1,16 +1,23 @@
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
+import firebase from 'firebase/compat/app';
 
 export const SurveyForm = () => {
 
-    const [dissatisfaction, setDissatisfaction] = useState('Mal');
-    const [normal, setNormal] = useState('Normal');
-    const [satisfaction, setSatisfaction] = useState('Excelente');
+    const db = firebase.firestore()
+
+    const [dissatisfaction, setDissatisfaction] = useState({Estado: 'Mal'});
+    const [normal, setNormal] = useState({Estado: 'Normal'});
+    const [satisfaction, setSatisfaction] = useState({Estado: 'Excelente'});
+    db.collection('surveys');
 
     const handleDissatisfaction = (e) => {
         e.preventDefault()
         setDissatisfaction(dissatisfaction);
         console.log(dissatisfaction)
+        db.collection('dissatisfaction').add({
+            estado: dissatisfaction
+        })
          
     Swal.fire({
         position: 'center',
@@ -25,6 +32,9 @@ export const SurveyForm = () => {
         e.preventDefault()
         setNormal(normal)
         console.log(normal);
+        db.collection('normal').add({
+            estado: normal
+        })
 
         Swal.fire({
             position: 'center',
@@ -39,6 +49,9 @@ export const SurveyForm = () => {
         e.preventDefault();
         setSatisfaction(satisfaction);
         console.log(satisfaction)
+        db.collection('satisfaction').add({
+            estado: satisfaction
+        }, {merge: true})
 
         Swal.fire({
             position: 'center',
